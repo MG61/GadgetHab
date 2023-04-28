@@ -19,4 +19,11 @@ public class MainController {
         return "home";
     }
 
+    @GetMapping("/auth")
+    public String authorization(Model model)
+    {
+        model.addAttribute("title", "Страница авторизации");
+        return "authorization";
+    }
+
 }
