@@ -26,4 +26,11 @@ public class MainController {
         return "authorization";
     }
 
+    @GetMapping("/test")
+    public String test(Model model)
+    {
+        model.addAttribute("title", "Тестовая страница");
+        return "test";
+    }
+
 }

@@ -1828,8 +1828,8 @@ textarea.form-control {
     display: block; }
 
 .was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .custom-control-input.is-valid:checked ~ .custom-control-label::before {
-    border-color: #34ce57;
-    background-color: #34ce57; }
+    border-color: #f45b69;
+    background-color: #f45b69; }
 
 .was-validated .custom-control-input:valid:focus ~ .custom-control-label::before, .custom-control-input.is-valid:focus ~ .custom-control-label::before {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
@@ -8144,14 +8144,14 @@ a {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease;
-    color: #01d28e; }
+    color: #f45b69; }
 a:hover, a:focus {
     text-decoration: none !important;
     outline: none !important;
     -webkit-box-shadow: none;
     box-shadow: none; }
 a:hover, a:active, a:focus {
-    color: #01d28e;
+    color: #f45b69;
     outline: none !important;
     text-decoration: none !important; }
 
@@ -8163,7 +8163,7 @@ h1, h2, h3, h4, h5,
     color: #000; }
 
 .bg-primary {
-    background: #01d28e !important; }
+    background: #f45b69 !important; }
 
 .ftco-section {
     padding: 7em 0; }
@@ -8231,7 +8231,7 @@ h1, h2, h3, h4, h5,
     outline: none !important;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border: 1px solid #01d28e; }
+    border: 1px solid #f45b69; }
 
 .field-icon {
     position: absolute;
@@ -8260,7 +8260,7 @@ h1, h2, h3, h4, h5,
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 1px;
-    color: #01d28e;
+    color: #f45b69;
     font-weight: 700; }
 
 .social-media {
@@ -8278,7 +8278,7 @@ h1, h2, h3, h4, h5,
 .social-media .social-icon span {
     color: #999999; }
 .social-media .social-icon:hover, .social-media .social-icon:focus {
-    background: #01d28e; }
+    background: #f45b69; }
 .social-media .social-icon:hover span, .social-media .social-icon:focus span {
     color: #fff; }
 
@@ -8335,9 +8335,9 @@ h1, h2, h3, h4, h5,
 
 /* Style the checkmark/indicator */
 .checkbox-primary {
-    color: #01d28e; }
+    color: #f45b69; }
 .checkbox-primary input:checked ~ .checkmark:after {
-    color: #01d28e; }
+    color: #f45b69; }
 
 .btn {
     cursor: pointer;

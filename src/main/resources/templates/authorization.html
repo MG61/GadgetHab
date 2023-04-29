@@ -6,18 +6,34 @@
   <meta charset="viewport" content="width=device-">
   <title>Домашняя страница</title>
 
-  <link rel="stylesheet" th:href="@{authorization.css}"  />
-  <script src="js/authorization.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="/css/authorization.css"  />
 
 </head>
 <body>
-<form class="login">
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
-  <button>Login</button>
-</form>
+    <div class="wrapper">
+        <div>
+          <h3 >Авторизация</h3>
+          <i class="fab fa-google"></i>
+        </div>
 
-<a href="https://codepen.io/davinci/" target="_blank">check my other pens</a>
-
+      <form>
+        <input type="text" placeholder="Почта">
+        <input type="password" placeholder="Пароль">
+      </form>
+      <button>Войти</button>
+      <div>
+      <label class="checkbox-wrap checkbox-primary mb-0">Запомнить меня?
+        <input type="checkbox" checked>
+        <span class="checkmark"></span>
+      </label>
+      <p>
+      <a href="/test">Забыли пароль?</a>
+      </p>
+      </div>
+      <div class="signup">
+        Нет аккаунта? <a href="/test">Зарегистрироваться</a>
+      </div>
+    </div>
 </body>
 </html>
