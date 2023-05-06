@@ -16,7 +16,7 @@ public class MainController {
     public String home(Model model)
     {
         model.addAttribute("title", "Главная страница");
-        return "home";
+        return "main";
     }
 
     @GetMapping("/auth")
