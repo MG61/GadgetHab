@@ -1,72 +1,197 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <title>Login 05</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <link rel="stylesheet" href="/css/test.css" type="text/css">
-
+    <meta charset="utf-8">
+    <title>Read, Write, Update, Delete</title>
+    <link rel="stylesheet" href="/css/main.css"  />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<section class="ftco-section">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-7 col-lg-5">
-        <div class="wrap">
-          <div class="login-wrap p-4 p-md-5">
-            <div class="d-flex">
-              <div class="w-100">
-                <h3 class="mb-4">Авторизация</h3>
-              </div>
-              <div class="w-100">
-                <p class="social-media d-flex justify-content-end">
-                  <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a>
-                </p>
-              </div>
-            </div>
-            <form action="#" class="signin-form">
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" required>
-                <label class="form-control-placeholder">Почта</label>
-              </div>
-              <div class="form-group">
-                <input id="password-field" type="password" class="form-control" required>
-                <label class="form-control-placeholder">Пароль</label>
-                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-              </div>
-              <div class="form-group">
-                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Войти</button>
-              </div>
-              <div class="form-group d-md-flex">
-                <div class="w-50 text-left">
-                  <label class="checkbox-wrap checkbox-primary mb-0">Запомнить меня?
-                    <input type="checkbox" checked>
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <div class="w-50 text-md-right">
-                  <a href="#">Забыли пароль?</a>
-                </div>
-              </div>
-            </form>
-            <p class="text-center">Нет аккаунта? <a data-toggle="tab" href="#signup">Зарегистрироваться</a></p>
-          </div>
+<section id="sec">
+<div id="container">
+    <div id="title_container">
+        <div id="form_container">
+            <label for="email"></label><input placeholder="Email" type="text" id="email"/>
+            <label for="password"></label><input placeholder="Password" type="text" id="password"/>
+            <label for="username"></label><input placeholder="Username" type="text" id="username"/>
         </div>
-      </div>
+        <button id="Insbtn"> Insert</button>
+        <button id="Selbtn"> Select</button>
+        <button id="Updbtn"> Update</button>
+        <button id="Delbtn"> Delete</button>
+        <button id="show"> show</button>
     </div>
-  </div>
+</div>
+    <section id="product1" class="section-p1">
+        <h2>Рекомендуемые товары</h2>
+        <p>Летние распродажи</p>
+        <div id="table" class="pro-container">
+<!--            <div  class="pro">-->
+<!--                <img src="https://mvideo-img.servicecdn.ru/Big/30064939bb.jpg"  alt="">-->
+<!--                <div class="des">-->
+<!--                    <h5>Смартфон Apple iPhone 14 Pro Max 128GB</h5>-->
+<!--                    <div class="star">-->
+<!--                        <i class="fas fa-star"></i>-->
+<!--                        <i class="fas fa-star"></i>-->
+<!--                        <i class="fas fa-star"></i>-->
+<!--                        <i class="fas fa-star"></i>-->
+<!--                        <i class="fas fa-star"></i>-->
+<!--                    </div>-->
+<!--                    <h4>118999 ₽</h4>-->
+<!--                </div>-->
+<!--                <a href="#"><i class="fal fa-shopping-cart cart"></i></a>-->
+<!--            </div>-->
+<!--            <div id="table1" class="pro">-->
+<!--            </div>-->
+        </div>
+    </section>
+
 </section>
 
-<script src="/js/authorization/jquery.min.js"></script>
-<script src="/js/authorization/popper.js"></script>
-<script src="/js/authorization/bootstrap.min.js"></script>
-<script src="/js/authorization/main.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAaS3xROolYg3L52gzlpGB5sNh767PKeqg",
+        authDomain: "mediamarkt-87e16.firebaseapp.com",
+        databaseURL: "https://mediamarkt-87e16-default-rtdb.firebaseio.com",
+        projectId: "mediamarkt-87e16",
+        storageBucket: "mediamarkt-87e16.appspot.com",
+        messagingSenderId: "1030181747159",
+        appId: "1:1030181747159:web:263fd23d6bfd07b60bf392",
+        measurementId: "G-BLP34HE0HP"
+    };
+
+    // Инициализация бд
+    const app = initializeApp(firebaseConfig);
+    import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+    var db = getDatabase();
+
+    function getData(){
+        const dbref = ref(db);
+
+        get(child(dbref, "Console/" )).then((snapshot)=>{
+            snapshot.forEach(function (getALLLLLData){
+                var data = getALLLLLData.val();
+                var namea = getALLLLLData.key;
+
+
+                var image = data["image"];
+                var name = data["name"];
+                var price = data["price"];
+
+                const tovar = [
+                    {
+                        image: image,
+                        name: name,
+                        price: price,
+                    }
+                ]
+
+                const categories = [...new Set(tovar.map((item)=>
+                {return item}))]
+                let i = 0;
+                document.getElementById("table").innerHTML += categories.map((item)=>{
+                    var {image, name, price} = item;
+                    return(
+                        `<div  class='pro'>
+                            <img src=${image}  alt=''/>
+                            <div class='des'>
+                                <h5>${name}</h5>
+                                <h4>${price}</h4>
+                            </div>
+                            <a href='#'><i class='fal fa-shopping-cart cart'></i></a>
+                        </div>`
+                    )
+                });
+            });
+        });
+    }
+
+
+    // Переменные
+
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    var username = document.getElementById("username");
+
+    var Insbtn = document.getElementById("Insbtn");
+    var Selbtn = document.getElementById("Selbtn");
+    var Updbtn = document.getElementById("Updbtn");
+    var Delbtn = document.getElementById("Delbtn");
+
+    var show = document.getElementById("show");
+
+    // Добавление данных
+    function InsertData(){
+        set(ref(db, "Students/" + username.value), {
+            email:email.value,
+            password:password.value,
+            username:username.value
+        })
+            .then(()=>{
+                alert("data stored success");
+            })
+            .catch((error)=>{
+                alert("data stored d");
+            });
+    }
+
+    function SelectData(){
+        const dbref = ref(db);
+
+        get(child(dbref, "Students/" + username.value)).then((snapshot)=>{
+            if (snapshot.exists()){
+                email.value = snapshot.val().email;
+                password.value = snapshot.val().password;
+                username.value = snapshot.val().username;
+            }
+            else{
+                alert("Данные не найдены");
+            }
+        })
+        .catch((error)=>{
+            alert("data stored d");
+        })
+    }
+
+    function UpdateData(){
+        update(ref(db, "Students/" + username.value), {
+            email:email.value,
+            password:password.value,
+            username:username.value
+        })
+            .then(()=>{
+                alert("data update success");
+            })
+            .catch((error)=>{
+                alert("data stored d");
+            });
+    }
+
+    function DeleteData(){
+        remove(ref(db, "Students/" + username.value))
+            .then(()=>{
+                alert("data removed success");
+            })
+            .catch((error)=>{
+                alert("data stored d");
+            });
+    }
+
+    Insbtn.addEventListener('click', InsertData);
+    Selbtn.addEventListener('click', SelectData);
+    Updbtn.addEventListener('click', UpdateData);
+    Delbtn.addEventListener('click', DeleteData);
+
+    show.addEventListener('click', getData());
+
+</script>
 </body>
 </html>
-
