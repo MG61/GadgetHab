@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин</title>
+    <title>Главная страница</title>
     <link rel="stylesheet" href="/css/main.css"/>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -15,14 +15,13 @@
 <body>
 
 <section id="header">
-    <a href="#" style="text-decoration: none; font-size: 24px; font-weight: 600; color: #1a153c">GadgetHab</a>
+    <a href="main.html" style="text-decoration: none; font-size: 24px; font-weight: 600; color: #1a153c">GadgetHab</a>
 
     <div>
         <ul id="navbar">
-            <li><a href="main.html">Главная</a></li>
-            <li><a class="active" href="shop.html">Магазин</a></li>
-            <li><a href="blog.html">Блог</a></li>
-            <li><a href="about.html">О нас</a></li>
+            <li><a class="active" href="main.html">Главная</a></li>
+            <li><a href="shop.html">Магазин</a></li>
+            <li><a href="about.html">О компании</a></li>
             <li><a href="contact.html">Контакты</a></li>
             <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
             <a href="#" id="close"><i class="far fa-times"></i></a>
@@ -35,9 +34,64 @@
     </div>
 </section>
 
-<section id="hero" style="background-image: url(/img/mainback2.png); height: 90vh; width: 100%; background-size: cover; background-position: top 25% right 0; padding: 0 80px; ">
-    <h2>#ВТРЕНДЕ</h2>
-    <p>Будь всегда на волне событий</p>
+<section id="hero"
+         style=" background-image: url(/img/mainback2.png); height: 90vh; width: 100%; background-size: cover; background-position: top 25% right 0; padding: 0 80px; ">
+    <h4>Специальное предложение</h4>
+    <h2>Супер скидки</h2>
+    <h1>На все продукты</h1>
+    <p>До 75%</p>
+    <button>Купить сейчас</button>
+</section>
+
+<section id="feature" class="section-p1">
+    <div class="fe-box">
+        <a href="../category/vr.html">
+            <img src="/img/categories/vr.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Шлемы VR</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/console.html">
+            <img src="/img/categories/gamepad.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Консоли</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/headphones.html">
+            <img src="/img/categories/headphones.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Наушники</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/microphone.html">
+            <img src="/img/categories/microphone.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Микрофоны</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/pc.html">
+            <img src="/img/categories/pc.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Комплектующие</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/smartphones.html">
+            <img src="/img/categories/smartphone.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Смартфоны</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/games.html">
+            <img src="/img/categories/game.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Приложения и игры</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/laptop.html">
+            <img src="/img/categories/laptop.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Ноутбуки</h6>
+        </a>
+    </div>
 </section>
 
 <section id="product1" class="section-p1">
@@ -48,6 +102,11 @@
     </div>
 </section>
 
+<section id="banner" class="section-m1" style="background-image: url(/img/banner3.png)">
+    <h4>Крутые товары</h4>
+    <h2>Скидки <span>до 70%</span> - на все игровые микрофоны и наушники</h2>
+    <button class="normal">Узнать больше</button>
+</section>
 
 <section id="product2" class="section-p1">
     <h2>Новые поступления</h2>
@@ -56,6 +115,7 @@
 
     </div>
 </section>
+
 <footer class="section-p1">
     <div class="col">
         <a href="#" class="logo" style="text-decoration: none; font-size: 24px; font-weight: 600; color: #1a153c">GadgetHab</a>
@@ -66,21 +126,23 @@
         <div class="follow">
             <h4>Подписывайтесь</h4>
             <div class="icon">
-                <i class="fab fa-github"></i>
+                <a href="https://github.com/MG61">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
         </div>
     </div>
 
     <div class="col">
         <h4>Категории</h4>
-        <a href="#">Шлемы VR</a>
-        <a href="#">Консоли</a>
-        <a href="#">Наушники</a>
-        <a href="#">Микрофоны</a>
-        <a href="#">Комплектующие</a>
-        <a href="#">Смартфоны</a>
-        <a href="#">Приложения и игры</a>
-        <a href="#">Ноутбуки</a>
+        <a href="../category/vr.html">Шлемы VR</a>
+        <a href="../category/console.html">Консоли</a>
+        <a href="../category/headphones.html">Наушники</a>
+        <a href="../category/microphone.html">Микрофоны</a>
+        <a href="../category/pc.html">Комплектующие</a>
+        <a href="../category/smartphones.html">Смартфоны</a>
+        <a href="../category/games.html">Приложения и игры</a>
+        <a href="../category/laptop.html">Ноутбуки</a>
     </div>
 
     <div class="col">
@@ -94,8 +156,9 @@
     <div class="col install">
         <h4>Установить приложение</h4>
         <p>Скачайте прямо с сайта</p>
+        <p>или с</p>
         <div class="row">
-            <img src="/img/download/google_play.png" style="width: 250px; height: 190px" alt=""/>
+            <img src="/img/download/google_play.png" style="width: 173px; height: 56px" alt=""/>
         </div>
     </div>
 
@@ -103,7 +166,6 @@
         <p>© 2023, ABRN</p>
     </div>
 </footer>
-
 
 <script type="module">
     import {initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
@@ -130,31 +192,31 @@
     const dbref = ref(db);
 
     get(child(dbref, "Recommendation/")).then((snapshot) => {
-        snapshot.forEach(function (getALLLLLData) {
-            var data = getALLLLLData.val();
-            var namea = getALLLLLData.key;
+            snapshot.forEach(function (getALLLLLData) {
+                var data = getALLLLLData.val();
+                var namea = getALLLLLData.key;
 
 
-            var image = data["image"];
-            var name = data["name"];
-            var price = data["price"];
+                var image = data["image"];
+                var name = data["name"];
+                var price = data["price"];
 
-            const tovar = [
-                {
-                    image: image,
-                    name: name,
-                    price: price,
-                }
-            ]
+                const tovar = [
+                    {
+                        image: image,
+                        name: name,
+                        price: price,
+                    }
+                ]
 
-            const categories = [...new Set(tovar.map((item) => {
-                return item
-            }))]
-            let i = 0;
-            document.getElementById("Recommendation").innerHTML += categories.map((item) => {
-                var {image, name, price} = item;
-                return (
-                    `
+                const categories = [...new Set(tovar.map((item) => {
+                    return item
+                }))]
+                let i = 0;
+                document.getElementById("Recommendation").innerHTML += categories.map((item) => {
+                    var {image, name, price} = item;
+                    return (
+                        `
 <div class='pro'>
     <img src=${image} alt=''/>
     <div class='des'>
@@ -164,10 +226,10 @@
     <a href='#'><i class='fal fa-shopping-cart cart'></i></a>
 </div>
 `
-                )
+                    )
+                });
             });
         });
-    });
 
     get(child(dbref, "Postupleniya/")).then((snapshot) => {
         snapshot.forEach(function (getALLLLLData) {

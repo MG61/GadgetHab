@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+<section id="header">
+    <a href="main.html" style="text-decoration: none; font-size: 24px; font-weight: 600; color: #1a153c">GadgetHab</a>
+
+    <div>
+        <ul id="navbar">
+            <li><a href="main.html">Главная</a></li>
+            <li><a class="active" href="shop.html">Магазин</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            <a href="#" id="close"><i class="far fa-times"></i></a>
+        </ul>
+    </div>
+
+    <div id="mobile">
+        <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+</section>
+
+<section id="page-header" style="height: 40vh; width: 100%; background-size: cover;">
+    <div class="anim_back">
+        <h2>#ВТРЕНДЕ</h2>
+        <p>Будь всегда на волне событий</p>
+    </div>
+    <div class="anim_back">
+        <img src="/img/shop_animate.svg" alt="">
+    </div>
+</section>
+
+<section id="product1" class="section-p1">
+    <div id="Recommendation" class="pro-container">
+
+    </div>
+</section>
+
+<section id="product2" class="section-p1">
+    <h2>Категории товаров</h2>
+</section>
+
+<section id="feature" class="section-p1">
+    <div class="fe-box">
+        <a href="../category/vr.html">
+            <img src="/img/categories/vr.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Шлемы VR</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/console.html">
+            <img src="/img/categories/gamepad.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Консоли</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/headphones.html">
+            <img src="/img/categories/headphones.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Наушники</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/microphone.html">
+            <img src="/img/categories/microphone.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Микрофоны</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/pc.html">
+            <img src="/img/categories/pc.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Комплектующие</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/smartphones.html">
+            <img src="/img/categories/smartphone.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Смартфоны</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/games.html">
+            <img src="/img/categories/game.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Приложения и игры</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="../category/laptop.html">
+            <img src="/img/categories/laptop.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Ноутбуки</h6>
+        </a>
+    </div>
+</section>
+
+<script type="module">
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAaS3xROolYg3L52gzlpGB5sNh767PKeqg",
+        authDomain: "mediamarkt-87e16.firebaseapp.com",
+        databaseURL: "https://mediamarkt-87e16-default-rtdb.firebaseio.com",
+        projectId: "mediamarkt-87e16",
+        storageBucket: "mediamarkt-87e16.appspot.com",
+        messagingSenderId: "1030181747159",
+        appId: "1:1030181747159:web:263fd23d6bfd07b60bf392",
+        measurementId: "G-BLP34HE0HP"
+    };
+
+    // Инициализация бд
+    const app = initializeApp(firebaseConfig);
+    import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+    var db = getDatabase();
+
+    const dbref = ref(db);
+
+
+
+    var categories;
+    let ab = 0;
+    get(child(dbref, "AllElec/")).then((snapshot) => {
+        snapshot.forEach(function (getALLLLLData) {
+            var data = getALLLLLData.val();
+            var namea = getALLLLLData.key;
+
+            var image = data["image"];
+            var name = data["name"];
+            var price = data["price"];
+
+            const tovar = [
+                {
+                    image: image,
+                    name: name,
+                    price: price,
+                }
+            ]
+
+            categories = [...new Set(tovar.map((item) => {
+                return item
+            }))]
+
+            document.getElementById("Recommendation").innerHTML += categories.map((item) => {
+                var {image, name, price} = item;
+
+                // var content = document.getElementById('Recommendation').innerHTML;
+                // console.log(content);
+                return (
+                    `
+<div id="prod" class='pro' >
+<a href="../sproduct.html" onclick="sessionStorage.setItem('id', ${namea})">
+    <img src=${image} alt=''/>
+    <div class='des'>
+        <h5 >${name}</h5>
+        <h4>${price}</h4>
+    </div>
+    <a><i class="fal fa-shopping-cart cart"></i></a>
+    </a>
+    </div>`
+                )
+            }).join('')
+        });
+    });
+
+
+
+</script>
+
+<script src="/js/main/script.js"></script>
+
+</body>
+
+</html>

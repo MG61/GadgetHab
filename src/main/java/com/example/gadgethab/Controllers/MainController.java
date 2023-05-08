@@ -3,11 +3,7 @@ package com.example.gadgethab.Controllers;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.gadgethab.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MainController {
@@ -16,21 +12,42 @@ public class MainController {
     public String home(Model model)
     {
         model.addAttribute("title", "Главная страница");
-        return "main";
+        return "navigation/main";
     }
 
     @GetMapping("/shop.html")
     public String shop(Model model)
     {
         model.addAttribute("title", "Магазин");
-        return "shop";
+        return "navigation/shop";
     }
 
-    @GetMapping("/blog.html")
-    public String blog(Model model)
+    @GetMapping("/about.html")
+    public String about(Model model)
     {
-        model.addAttribute("title", "Блог");
-        return "blog";
+        model.addAttribute("title", "О компании");
+        return "navigation/about";
+    }
+
+    @GetMapping("/contact.html")
+    public String contact(Model model)
+    {
+        model.addAttribute("title", "Контакты");
+        return "navigation/contact";
+    }
+
+    @GetMapping("/sproduct.html")
+    public String single_product(Model model)
+    {
+        model.addAttribute("title", "Товар");
+        return "sproduct";
+    }
+
+    @GetMapping("/cart.html")
+    public String cart(Model model)
+    {
+        model.addAttribute("title", "Корзина");
+        return "navigation/cart.html";
     }
 
     @GetMapping("/auth")

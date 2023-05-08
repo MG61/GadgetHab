@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Магазин/Товар</title>
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+<section id="header">
+  <a href="#" style="text-decoration: none; font-size: 24px; font-weight: 600; color: #1a153c">GadgetHab</a>
+
+  <div>
+    <ul id="navbar">
+      <li><a href="main.html">Главная</a></li>
+      <li><a class="active" href="shop.html">Магазин</a></li>
+      <li><a href="about.html">О компании</a></li>
+      <li><a href="contact.html">Контакты</a></li>
+      <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+      <a href="#" id="close"><i class="far fa-times"></i></a>
+    </ul>
+  </div>
+
+  <div id="mobile">
+    <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+    <i id="bar" class="fas fa-outdent"></i>
+  </div>
+</section>
+
+<section id="prodetails" class="section-p1">
+  <div id="img_sproduct" class="single-pro-image">
+  </div>
+
+  <div class="single-pro-details">
+    <h4 id="name_sproduct"></h4>
+    <h2 id="price_sproduct"></h2>
+    <input type="number" value="1"/>
+    <button class="normal">Добавить в корзину</button>
+    <h4>Подробная информация</h4>
+    <span id="podrob_sproduct"></span>
+  </div>
+</section>
+
+<script type="module">
+  import {initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAaS3xROolYg3L52gzlpGB5sNh767PKeqg",
+    authDomain: "mediamarkt-87e16.firebaseapp.com",
+    databaseURL: "https://mediamarkt-87e16-default-rtdb.firebaseio.com",
+    projectId: "mediamarkt-87e16",
+    storageBucket: "mediamarkt-87e16.appspot.com",
+    messagingSenderId: "1030181747159",
+    appId: "1:1030181747159:web:263fd23d6bfd07b60bf392",
+    measurementId: "G-BLP34HE0HP"
+  };
+
+  // Инициализация бд
+  const app = initializeApp(firebaseConfig);
+  import {getDatabase, ref, get, set, child, update, remove}
+    from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+  var db = getDatabase();
+
+  const dbref = ref(db);
+
+  var coockie = sessionStorage.getItem('id')
+  console.log(coockie);
+
+  var image1 = document.getElementById("img_sproduct");
+  var name1 = document.getElementById("name_sproduct");
+  var price1 = document.getElementById("price_sproduct");
+  var podrob1 = document.getElementById("podrob_sproduct");
+
+  var img = document.createElement("img");
+  img.setAttribute('width', '100%');
+  get(child(dbref, "AllElec/" + coockie)).then((snapshot)=>{
+    if (snapshot.exists()){
+        img.src = snapshot.val().image;
+        name1.innerHTML = snapshot.val().name;
+        price1.innerHTML = snapshot.val().price;
+        podrob1.innerHTML = snapshot.val().podrob;
+
+      var src = document.getElementById("img_sproduct");
+      src.appendChild(img);
+      console.log(image1.value, name1.value, price1.value, podrob1.value);
+    }
+      else{
+        alert("Данные не найдены");
+      }
+    })
+            .catch((error)=>{
+              alert("data stored d");
+            })
+
+
+</script>
+
+<script src="/js/main/script.js"></script>
+
+</body>
+
+</html>
