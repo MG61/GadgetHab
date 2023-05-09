@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta charset="viewport" content="width=device-">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="/css/main.css"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="/css/authorization.css"  />
+  <link href="https://fonts.googleapis.com/css?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+
+<section id="header">
+  <a href="main.html" style="text-decoration: none; font-size: 24px; font-weight: 600; color: #1a153c">GadgetHab</a>
+
+  <div>
+    <ul id="navbar">
+      <li><a href="main.html">Главная</a></li>
+      <li><a href="shop.html">Магазин</a></li>
+      <li><a href="about.html">О компании</a></li>
+      <li><a href="contact.html">Контакты</a></li>
+      <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+      <a href="#" id="close"><i class="far fa-times"></i></a>
+    </ul>
+  </div>
+
+  <div id="mobile">
+    <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+    <i id="bar" class="fas fa-outdent"></i>
+  </div>
+</section>
+
+<div class="container">
+  <div class="img">
+    <img src="/img/login_animate.svg"/>
+  </div>
+  <div class="login-container">
+    <form action="#">
+      <h2>Регистрация</h2>
+      <div class="input-div one">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        <div>
+          <input id="email_signup" class="input" type="email" placeholder="Почта">
+        </div>
+      </div>
+      <div class="input-div two">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div>
+          <input id="password_signup" class="input" type="password" minlength="6" maxlength="30" placeholder="Пароль">
+        </div>
+      </div>
+      <div class="input-div two">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div>
+          <input id="name_signup" class="input" type="text" minlength="2" maxlength="30" placeholder="Имя">
+        </div>
+      </div>
+      <div class="input-div two">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div>
+          <input id="number_signup" class="input" type="text" minlength="9" maxlength="30" placeholder="Телефон">
+        </div>
+      </div>
+      <div><a href="authorization.html"><strong>Авторизироваться</strong></a></div>
+      <input id="SingUp" type="submit" class="btn" value="Зарегистрироваться" />
+    </form>
+  </div>
+</div>
+
+<script type="module">
+  import {initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+  import {getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAaS3xROolYg3L52gzlpGB5sNh767PKeqg",
+    authDomain: "mediamarkt-87e16.firebaseapp.com",
+    databaseURL: "https://mediamarkt-87e16-default-rtdb.firebaseio.com",
+    projectId: "mediamarkt-87e16",
+    storageBucket: "mediamarkt-87e16.appspot.com",
+    messagingSenderId: "1030181747159",
+    appId: "1:1030181747159:web:263fd23d6bfd07b60bf392",
+    measurementId: "G-BLP34HE0HP"
+  };
+
+  // Инициализация бд
+  const app = initializeApp(firebaseConfig);
+  import {getDatabase, ref, get, set, child, update, remove}
+    from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+  const database = getDatabase();
+  const auth = getAuth();
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  var i1 = getRandomInt(9999);
+  var i2 = getRandomInt(9999);
+  var i3 = getRandomInt(9999);
+  var i4 = getRandomInt(9999);
+  var forcard = i1 + " " + i2 + " " + i3 + " " + i4;
+
+  var SingUp = document.getElementById("SingUp");
+
+
+
+
+  SingUp.addEventListener('click', (e)=>{
+
+    var email_signup = document.getElementById('email_signup').value;
+    var password_signup = document.getElementById('password_signup').value;
+    var name = document.getElementById('name_signup').value;
+    var phone = document.getElementById('number_signup').value;
+
+
+    createUserWithEmailAndPassword(auth, email_signup, password_signup)
+            .then((userCredential) =>{
+              const user = userCredential.user;
+
+              set(ref(database, 'Пользователи/' + user.uid),{
+                email:email_signup,
+                pass:password_signup,
+                "level":"Начальный",
+                name:name,
+                phone:phone,
+                card:forcard
+              })
+
+            })
+            .catch((error) =>{
+              const errorCode = error.code;
+              const errorMessage = error.message;
+
+              alert('errorMessage');
+            });
+
+    alert('Аккаунт успешно создан!');
+    setTimeout(function(){
+      window.location.href = 'authorization.html';
+    }, 1 * 1000);
+  });
+
+  // user.uid
+
+
+</script>
+</body>
+</html>

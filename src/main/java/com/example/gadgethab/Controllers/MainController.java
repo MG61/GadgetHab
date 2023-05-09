@@ -50,11 +50,18 @@ public class MainController {
         return "navigation/cart.html";
     }
 
-    @GetMapping("/auth")
+    @GetMapping("/authorization.html")
     public String authorization(Model model)
     {
-        model.addAttribute("title", "Страница авторизации");
+        model.addAttribute("title", "Авторизация");
         return "authorization";
+    }
+
+    @GetMapping("/registration.html")
+    public String registration(Model model)
+    {
+        model.addAttribute("title", "Регистрация");
+        return "registration";
     }
 
     @GetMapping("/test")
