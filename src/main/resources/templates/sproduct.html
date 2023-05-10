@@ -81,7 +81,7 @@
 
   var img = document.createElement("img");
   img.setAttribute('width', '100%');
-  get(child(dbref, "AllElec/" + coockie)).then((snapshot)=>{
+  get(child(dbref, coockie)).then((snapshot)=>{
     if (snapshot.exists()){
         img.src = snapshot.val().image;
         name1.innerHTML = snapshot.val().name;
