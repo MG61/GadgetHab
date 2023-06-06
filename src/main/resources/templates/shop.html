@@ -105,6 +105,56 @@
     </div>
 </section>
 
+<footer class="section-p1">
+    <div class="col">
+        <a href="#" class="logo" style="text-decoration: none; font-size: 24px; font-weight: 600; color: #1a153c">GadgetHab</a>
+        <h4>Контакты</h4>
+        <p><strong>Адрес:</strong> г.Москва ул. Нежинская 7</p>
+        <p><strong>Телефон:</strong> +7-977-377-34-22</p>
+        <p><strong>График:</strong> 10:00 - 17:00, Пон - Пят</p>
+        <div class="follow">
+            <h4>Подписывайтесь</h4>
+            <div class="icon">
+                <a href="https://github.com/MG61">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <h4>Категории</h4>
+        <a href="vr.html">Шлемы VR</a>
+        <a href="console.html">Консоли</a>
+        <a href="headphones.html">Наушники</a>
+        <a href="microphone.html">Микрофоны</a>
+        <a href="pc.html">Комплектующие</a>
+        <a href="smartphones.html">Смартфоны</a>
+        <a href="games.html">Приложения и игры</a>
+        <a href="laptop.html">Ноутбуки</a>
+    </div>
+
+    <div class="col">
+        <h4>Мой аккаунт</h4>
+        <a href="authorization.html">Авторизоваться</a>
+        <a href="cart.html">Корзина</a>
+        <a href="contact.html">Помощь</a>
+    </div>
+
+    <div class="col install">
+        <h4>Установить приложение</h4>
+        <p>Скачайте прямо с сайта</p>
+        <p>или с</p>
+        <div onclick="window.location.href = 'about.html'" class="row">
+            <img src="/img/download/google_play.png" style="width: 173px; height: 56px" alt=""/>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>© 2023, ABRN</p>
+    </div>
+</footer>
+
 <script type="module">
     import {initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
 
@@ -127,8 +177,6 @@
     var db = getDatabase();
 
     const dbref = ref(db);
-
-
 
     var categories;
     let ab = 0;
