@@ -12,28 +12,28 @@ public class MainController {
     public String home(Model model)
     {
         model.addAttribute("title", "Главная страница");
-        return "navigation/main";
+        return "main";
     }
 
     @GetMapping("/shop.html")
     public String shop(Model model)
     {
         model.addAttribute("title", "Магазин");
-        return "navigation/shop";
+        return "shop";
     }
 
     @GetMapping("/about.html")
     public String about(Model model)
     {
         model.addAttribute("title", "О компании");
-        return "navigation/about";
+        return "about";
     }
 
     @GetMapping("/contact.html")
     public String contact(Model model)
     {
         model.addAttribute("title", "Контакты");
-        return "navigation/contact";
+        return "contact";
     }
 
     @GetMapping("/sproduct.html")
@@ -47,7 +47,7 @@ public class MainController {
     public String cart(Model model)
     {
         model.addAttribute("title", "Корзина");
-        return "navigation/cart.html";
+        return "cart.html";
     }
 
     @GetMapping("/authorization.html")
@@ -64,60 +64,60 @@ public class MainController {
         return "registration";
     }
 
-    @GetMapping("/category/console.html")
+    @GetMapping("/console.html")
     public String console(Model model)
     {
         model.addAttribute("title", "Консоли");
-        return "category/console";
+        return "console";
     }
 
-    @GetMapping("/category/games.html")
+    @GetMapping("/games.html")
     public String games(Model model)
     {
         model.addAttribute("title", "Игры");
-        return "category/games";
+        return "games";
     }
 
-    @GetMapping("/category/headphones.html")
+    @GetMapping("/headphones.html")
     public String headphones(Model model)
     {
         model.addAttribute("title", "Наушники");
-        return "category/headphones";
+        return "headphones";
     }
 
-    @GetMapping("/category/laptop.html")
+    @GetMapping("/laptop.html")
     public String laptop(Model model)
     {
         model.addAttribute("title", "Ноутбуки");
-        return "category/laptop";
+        return "laptop";
     }
 
-    @GetMapping("/category/microphone.html")
+    @GetMapping("/microphone.html")
     public String microphone(Model model)
     {
         model.addAttribute("title", "Микрофоны");
-        return "category/microphone";
+        return "microphone";
     }
 
-    @GetMapping("/category/pc.html")
+    @GetMapping("/pc.html")
     public String pc(Model model)
     {
         model.addAttribute("title", "Комплектующие");
-        return "category/pc";
+        return "pc";
     }
 
-    @GetMapping("/category/smartphones.html")
+    @GetMapping("/smartphones.html")
     public String smartphones(Model model)
     {
         model.addAttribute("title", "Смартфоны");
-        return "category/smartphones";
+        return "smartphones";
     }
 
-    @GetMapping("/category/vr.html")
+    @GetMapping("/vr.html")
     public String vr(Model model)
     {
         model.addAttribute("title", "Виртуальная реальность");
-        return "category/vr";
+        return "vr";
     }
 
     @GetMapping("/test")

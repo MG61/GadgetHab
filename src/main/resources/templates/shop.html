@@ -36,8 +36,8 @@
 
 <section id="page-header" style="height: 40vh; width: 100%; background-size: cover;">
     <div class="anim_back">
-        <h2>#Консоли</h2>
-        <p>Для приятной игры</p>
+        <h2>#ВТРЕНДЕ</h2>
+        <p>Будь всегда на волне событий</p>
     </div>
     <div class="anim_back">
         <img src="/img/shop_animate.svg" alt="">
@@ -46,10 +46,64 @@
 
 <section id="product1" class="section-p1">
     <div id="Recommendation" class="pro-container">
+
     </div>
 </section>
 
+<section id="product2" class="section-p1">
+    <h2>Категории товаров</h2>
+</section>
 
+<section id="feature" class="section-p1">
+    <div class="fe-box">
+        <a href="vr.html">
+            <img src="/img/categories/vr.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Шлемы VR</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="console.html">
+            <img src="/img/categories/gamepad.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Консоли</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="headphones.html">
+            <img src="/img/categories/headphones.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Наушники</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="microphone.html">
+            <img src="/img/categories/microphone.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Микрофоны</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="pc.html">
+            <img src="/img/categories/pc.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Комплектующие</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="smartphones.html">
+            <img src="/img/categories/smartphone.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Смартфоны</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="games.html">
+            <img src="/img/categories/game.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Приложения и игры</h6>
+        </a>
+    </div>
+    <div class="fe-box">
+        <a href="laptop.html">
+            <img src="/img/categories/laptop.png" style="width: 90px; height: 90px" alt=""/>
+            <h6>Ноутбуки</h6>
+        </a>
+    </div>
+</section>
 
 <script type="module">
     import {initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
@@ -78,7 +132,7 @@
 
     var categories;
     let ab = 0;
-    get(child(dbref, "Laptop/")).then((snapshot) => {
+    get(child(dbref, "AllElec/")).then((snapshot) => {
         snapshot.forEach(function (getALLLLLData) {
             var data = getALLLLLData.val();
             var namea = getALLLLLData.key;
@@ -107,7 +161,7 @@
                 return (
                     `
 <div id="prod" class='pro' >
-<a href="../sproduct.html" onclick="sessionStorage.setItem('id', 'Laptop/' + ${namea})">
+<a href="sproduct.html" onclick="sessionStorage.setItem('id', 'AllElec/' + ${namea})">
     <img src=${image} alt=''/>
     <div class='des'>
         <h5 >${name}</h5>

@@ -36,8 +36,8 @@
 
 <section id="page-header" style="height: 40vh; width: 100%; background-size: cover;">
     <div class="anim_back">
-        <h2>#МИКРОФОНЫ</h2>
-        <p>Чтобы тебя слышали из другой комнаты</p>
+        <h2>#НОУТБУКИ</h2>
+        <p>Мобильность</p>
     </div>
     <div class="anim_back">
         <img src="/img/shop_animate.svg" alt="">
@@ -78,7 +78,7 @@
 
     var categories;
     let ab = 0;
-    get(child(dbref, "Microphone/")).then((snapshot) => {
+    get(child(dbref, "Komplectuyushie/")).then((snapshot) => {
         snapshot.forEach(function (getALLLLLData) {
             var data = getALLLLLData.val();
             var namea = getALLLLLData.key;
@@ -107,7 +107,7 @@
                 return (
                     `
 <div id="prod" class='pro' >
-<a href="../sproduct.html" onclick="sessionStorage.setItem('id', 'Microphone/' + ${namea})">
+<a href="sproduct.html" onclick="sessionStorage.setItem('id', 'Komplectuyushie/' + ${namea})">
     <img src=${image} alt=''/>
     <div class='des'>
         <h5 >${name}</h5>

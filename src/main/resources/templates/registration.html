@@ -97,7 +97,7 @@
 
   // Инициализация бд
   const app = initializeApp(firebaseConfig);
-  import {getDatabase, ref, get, set, child, update, remove}
+  import {getDatabase, ref, get, set, child, update, remove, add}
     from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 
   const database = getDatabase();
@@ -130,7 +130,7 @@
             .then((userCredential) =>{
               const user = userCredential.user;
 
-              set(ref(database, 'Пользователи/' + user.uid),{
+              add(ref(database, 'Пользователи/' + user.uid),{
                 email:email_signup,
                 pass:password_signup,
                 "level":"Начальный",

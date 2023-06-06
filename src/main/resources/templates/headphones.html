@@ -36,7 +36,7 @@
 
 <section id="page-header" style="height: 40vh; width: 100%; background-size: cover;">
     <div class="anim_back">
-        <h2>#КОНСОЛИ</h2>
+        <h2>#Консоли</h2>
         <p>Для приятной игры</p>
     </div>
     <div class="anim_back">
@@ -78,7 +78,7 @@
 
     var categories;
     let ab = 0;
-    get(child(dbref, "Console/")).then((snapshot) => {
+    get(child(dbref, "Headphones/")).then((snapshot) => {
         snapshot.forEach(function (getALLLLLData) {
             var data = getALLLLLData.val();
             var namea = getALLLLLData.key;
@@ -107,7 +107,7 @@
                 return (
                     `
 <div id="prod" class='pro' >
-<a href="../sproduct.html" onclick="sessionStorage.setItem('id', 'Console/' + ${namea})">
+<a href="sproduct.html" onclick="sessionStorage.setItem('id', 'Headphones/' + ${namea})">
     <img src=${image} alt=''/>
     <div class='des'>
         <h5 >${name}</h5>

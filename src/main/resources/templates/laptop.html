@@ -78,7 +78,7 @@
 
     var categories;
     let ab = 0;
-    get(child(dbref, "Headphones/")).then((snapshot) => {
+    get(child(dbref, "Laptop/")).then((snapshot) => {
         snapshot.forEach(function (getALLLLLData) {
             var data = getALLLLLData.val();
             var namea = getALLLLLData.key;
@@ -107,7 +107,7 @@
                 return (
                     `
 <div id="prod" class='pro' >
-<a href="../sproduct.html" onclick="sessionStorage.setItem('id', 'Headphones/' + ${namea})">
+<a href="sproduct.html" onclick="sessionStorage.setItem('id', 'Laptop/' + ${namea})">
     <img src=${image} alt=''/>
     <div class='des'>
         <h5 >${name}</h5>

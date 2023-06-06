@@ -41,8 +41,8 @@
   <div class="single-pro-details">
     <h4 id="name_sproduct"></h4>
     <h2 id="price_sproduct"></h2>
-    <input type="number" value="1"/>
-    <button class="normal">Добавить в корзину</button>
+    <input type="number" value="1" min="1"/>
+    <button id="button_add_korz" class="normal">Добавить в корзину</button>
     <h4>Подробная информация</h4>
     <span id="podrob_sproduct"></span>
   </div>
@@ -64,7 +64,7 @@
 
   // Инициализация бд
   const app = initializeApp(firebaseConfig);
-  import {getDatabase, ref, get, set, child, update, remove}
+  import {getDatabase, ref, get, set, child, update, remove, push}
     from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 
   var db = getDatabase();
@@ -72,12 +72,15 @@
   const dbref = ref(db);
 
   var coockie = sessionStorage.getItem('id')
+  var coockie_user = sessionStorage.getItem('user')
   console.log(coockie);
 
   var image1 = document.getElementById("img_sproduct");
   var name1 = document.getElementById("name_sproduct");
   var price1 = document.getElementById("price_sproduct");
   var podrob1 = document.getElementById("podrob_sproduct");
+  var korz_add = document.getElementById("button_add_korz");
+
 
   var img = document.createElement("img");
   img.setAttribute('width', '100%');
@@ -100,6 +103,25 @@
               alert("data stored d");
             })
 
+
+  korz_add.addEventListener('click', (e) => {
+    var ref_db = ref(db, "Пользователи/" + coockie_user + "/Cart");
+    var push_db = push(ref_db);
+
+    get(child(dbref, coockie)).then((snapshot)=>{
+      console.log(coockie, coockie_user);
+      var image_cart = snapshot.val().image;
+      var name_cart = snapshot.val().name;
+      var price_cart = snapshot.val().price;
+      set(push_db, {
+        image:image_cart,
+        name:name_cart,
+        price:price_cart,
+        quantity:1,
+        totalPrice:price_cart
+      })
+    })
+  });
 
 </script>
 
