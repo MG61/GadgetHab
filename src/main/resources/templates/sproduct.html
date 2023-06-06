@@ -41,7 +41,7 @@
   <div class="single-pro-details">
     <h4 id="name_sproduct"></h4>
     <h2 id="price_sproduct"></h2>
-    <input type="number" value="1" min="1"/>
+    <input type="number" value="1" min="1" onchange="sessionStorage.setItem('quantity_add_korz', this.value)"/>
     <button id="button_add_korz" class="normal">Добавить в корзину</button>
     <h4>Подробная информация</h4>
     <span id="podrob_sproduct"></span>
@@ -73,6 +73,7 @@
 
   var coockie = sessionStorage.getItem('id')
   var coockie_user = sessionStorage.getItem('user')
+  var quantity_add_korz = sessionStorage.getItem('quantity_add_korz')
   console.log(coockie);
 
   var image1 = document.getElementById("img_sproduct");
@@ -108,6 +109,7 @@
     var ref_db = ref(db, "Пользователи/" + coockie_user + "/Cart");
     var push_db = push(ref_db);
 
+    console.log(quantity_add_korz);
     get(child(dbref, coockie)).then((snapshot)=>{
       console.log(coockie, coockie_user);
       var image_cart = snapshot.val().image;
@@ -117,7 +119,7 @@
         image:image_cart,
         name:name_cart,
         price:price_cart,
-        quantity:1,
+        quantity:quantity_add_korz,
         totalPrice:price_cart
       })
     })
