@@ -115,6 +115,14 @@
       var image_cart = snapshot.val().image;
       var name_cart = snapshot.val().name;
       var price_cart = snapshot.val().price;
+
+      var total_price_cart = sessionStorage.getItem('total_price_cart');
+      if (total_price_cart !== ""){
+        sessionStorage.setItem('total_price_cart', (parseInt(total_price_cart) + parseInt(price_cart)).toString());
+      }else{
+        sessionStorage.setItem('total_price_cart', price_cart);
+      }
+
       set(push_db, {
         image:image_cart,
         name:name_cart,
@@ -123,6 +131,8 @@
         totalPrice:price_cart
       })
     })
+
+
   });
 
 </script>

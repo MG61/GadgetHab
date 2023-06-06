@@ -75,7 +75,7 @@
         <table>
             <tr>
                 <td>Всего:</td>
-                <td>149997</td>
+                <td id="sum_cart">149997</td>
             </tr>
             <tr>
                 <td>Доставка</td>
@@ -83,10 +83,10 @@
             </tr>
             <tr>
                 <td><strong>Сумма:</strong></td>
-                <td><strong>149997</strong></td>
+                <td id="allsum_cart"><strong>149997</strong></td>
             </tr>
         </table>
-        <button class="normal">Перейти к оплате</button>
+        <button onclick="sessionStorage.setItem('total_price_cart', '0');" class="normal">Перейти к оплате</button>
     </div>
 </section>
 
@@ -123,7 +123,14 @@
     var path = 'Пользователи/' + coockie_user + '/Cart';
 
 
+    var sum_cart = document.getElementById("sum_cart");
+    var allsum_cart = document.getElementById("allsum_cart");
+
+    sum_cart.innerHTML = sessionStorage.getItem('total_price_cart');
+    allsum_cart.innerHTML = sessionStorage.getItem('total_price_cart');
+
     var categories;
+    var TotalSum = 0;
     get(child(dbref, "Пользователи/" + coockie_user + "/Cart")).then((snapshot) => {
         snapshot.forEach(function (getALLLLLData) {
             var data = getALLLLLData.val();
@@ -149,6 +156,7 @@
                 return item
             }))]
 
+
             document.getElementById("cart_item").innerHTML += categories.map((item) => {
                 var {image, name, price, quantity, totalPrice} = item;
 
@@ -158,13 +166,14 @@
             <td><img src="${image}" alt=""/></td>
             <td>${name}</td>
             <td>${price}</td>
-            <td><input href="#" type="number" min="1" max="10"  onchange="update_cart(this.value)" value="${quantity}"></td>
+            <td><input href="#" type="number" min="1" max="10"  onchange="this.value" value="${quantity}"></td>
             <td>${totalPrice}</td>
                     `
                 )
             }).join('')
         });
     });
+    console.log(TotalSum)
 
 </script>
 
