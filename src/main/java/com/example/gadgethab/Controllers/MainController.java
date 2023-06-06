@@ -64,6 +64,62 @@ public class MainController {
         return "registration";
     }
 
+    @GetMapping("/category/console.html")
+    public String console(Model model)
+    {
+        model.addAttribute("title", "Консоли");
+        return "category/console";
+    }
+
+    @GetMapping("/category/games.html")
+    public String games(Model model)
+    {
+        model.addAttribute("title", "Игры");
+        return "category/games";
+    }
+
+    @GetMapping("/category/headphones.html")
+    public String headphones(Model model)
+    {
+        model.addAttribute("title", "Наушники");
+        return "category/headphones";
+    }
+
+    @GetMapping("/category/laptop.html")
+    public String laptop(Model model)
+    {
+        model.addAttribute("title", "Ноутбуки");
+        return "category/laptop";
+    }
+
+    @GetMapping("/category/microphone.html")
+    public String microphone(Model model)
+    {
+        model.addAttribute("title", "Микрофоны");
+        return "category/microphone";
+    }
+
+    @GetMapping("/category/pc.html")
+    public String pc(Model model)
+    {
+        model.addAttribute("title", "Комплектующие");
+        return "category/pc";
+    }
+
+    @GetMapping("/category/smartphones.html")
+    public String smartphones(Model model)
+    {
+        model.addAttribute("title", "Смартфоны");
+        return "category/smartphones";
+    }
+
+    @GetMapping("/category/vr.html")
+    public String vr(Model model)
+    {
+        model.addAttribute("title", "Виртуальная реальность");
+        return "category/vr";
+    }
+
     @GetMapping("/test")
     public String test(Model model)
     {

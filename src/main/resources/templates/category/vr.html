@@ -1,10 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet" type="text/css"/>
 </head>
+
 <body>
 
+<section id="header">
+    <a href="main.html" style="text-decoration: none; font-size: 24px; font-weight: 600; color: #1a153c">GadgetHab</a>
+
+    <div>
+        <ul id="navbar">
+            <li><a href="main.html">Главная</a></li>
+            <li><a class="active" href="shop.html">Магазин</a></li>
+            <li><a href="about.html">О компании</a></li>
+            <li><a href="contact.html">Контакты</a></li>
+            <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+            <a href="#" id="close"><i class="far fa-times"></i></a>
+        </ul>
+    </div>
+
+    <div id="mobile">
+        <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+    </div>
+</section>
+
+<section id="page-header" style="height: 40vh; width: 100%; background-size: cover;">
+    <div class="anim_back">
+        <h2>#ВИРТУАЛЬНАЯ РЕАЛЬНОСТЬ</h2>
+        <p>Окунись в мир приключений</p>
+    </div>
+    <div class="anim_back">
+        <img src="/img/shop_animate.svg" alt="">
+    </div>
+</section>
+
+<section id="product1" class="section-p1">
+    <div id="Recommendation" class="pro-container">
+    </div>
+</section>
+
+
+
+<script type="module">
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAaS3xROolYg3L52gzlpGB5sNh767PKeqg",
+        authDomain: "mediamarkt-87e16.firebaseapp.com",
+        databaseURL: "https://mediamarkt-87e16-default-rtdb.firebaseio.com",
+        projectId: "mediamarkt-87e16",
+        storageBucket: "mediamarkt-87e16.appspot.com",
+        messagingSenderId: "1030181747159",
+        appId: "1:1030181747159:web:263fd23d6bfd07b60bf392",
+        measurementId: "G-BLP34HE0HP"
+    };
+
+    // Инициализация бд
+    const app = initializeApp(firebaseConfig);
+    import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+    var db = getDatabase();
+
+    const dbref = ref(db);
+
+
+
+    var categories;
+    let ab = 0;
+    get(child(dbref, "VR/")).then((snapshot) => {
+        snapshot.forEach(function (getALLLLLData) {
+            var data = getALLLLLData.val();
+            var namea = getALLLLLData.key;
+
+            var image = data["image"];
+            var name = data["name"];
+            var price = data["price"];
+
+            const tovar = [
+                {
+                    image: image,
+                    name: name,
+                    price: price,
+                }
+            ]
+
+            categories = [...new Set(tovar.map((item) => {
+                return item
+            }))]
+
+            document.getElementById("Recommendation").innerHTML += categories.map((item) => {
+                var {image, name, price} = item;
+
+                // var content = document.getElementById('Recommendation').innerHTML;
+                // console.log(content);
+                return (
+                    `
+<div id="prod" class='pro' >
+<a href="../sproduct.html" onclick="sessionStorage.setItem('id', 'VR/' + ${namea})">
+    <img src=${image} alt=''/>
+    <div class='des'>
+        <h5 >${name}</h5>
+        <h4>${price}</h4>
+    </div>
+    </a>
+    </div>`
+                )
+            }).join('')
+        });
+    });
+
+
+
+</script>
+
+<script src="/js/main/script.js"></script>
+
 </body>
+
 </html>

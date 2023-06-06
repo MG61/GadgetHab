@@ -225,7 +225,6 @@
         <h5>${name}</h5>
         <h4>${price}</h4>
     </div>
-    <a type="submit" onclick="GetDataTovar()"><i class='fal fa-shopping-cart cart'></i></a>
 </div>
 `
                 )
@@ -267,7 +266,6 @@
         <h5>${name}</h5>
         <h4>${price}</h4>
     </div>
-    <a href='#'><i class='fal fa-shopping-cart cart'></i></a>
 </div>
 `
                 )
@@ -328,44 +326,10 @@
 
     var coockie_user = sessionStorage.getItem('user');
 
-    function GetDataTovar() {
-
-        // if (coockie_user !== "") {
-        //     get(child(dbref, source)).then((snapshot) => {
-        //         snapshot.forEach(function (getALLLLLData) {
-        //             var data = getALLLLLData.val();
-        //             var namea = getALLLLLData.key;
-        //
-        //             console.log(coockie_user)
-        //             var image = data["image"];
-        //             var name = data["name"];
-        //             var price = data["price"];
-        //
-        //             var quantity_dob = 1;
-        //             set(ref(db, "Пользователи/" + coockie_user + "Cart/"), {
-        //                 image: image.value,
-        //                 name: name.value,
-        //                 price: price.value,
-        //                 // quantity: quantity_dob,
-        //                 // totalPrice: String(Math.floor(price.value) + quantity_dob)
-        //             })
-        //                 .then(() => {
-        //                     alert("data stored success");
-        //                 })
-        //                 .catch((error) => {
-        //                     alert("data stored d");
-        //                 });
-        //
-        //         });
-        //     });
-        // } else {
-        //     window.location.href = 'authorization.html';
-        // }
-    }
-
 
 </script>
 
+<script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
 <script src="/js/main/script.js"></script>
 
 </body>
