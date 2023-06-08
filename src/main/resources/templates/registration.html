@@ -74,7 +74,7 @@
         </div>
       </div>
       <div><a href="authorization.html"><strong>Авторизироваться</strong></a></div>
-      <input id="SingUp" type="submit" class="btn" value="Зарегистрироваться" />
+      <input id="SingUp" type="button" class="btn" value="Зарегистрироваться" />
     </form>
   </div>
 </div>
@@ -133,7 +133,6 @@
   import {initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
   import {getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
 
-
   const firebaseConfig = {
     apiKey: "AIzaSyAaS3xROolYg3L52gzlpGB5sNh767PKeqg",
     authDomain: "mediamarkt-87e16.firebaseapp.com",
@@ -147,7 +146,7 @@
 
   // Инициализация бд
   const app = initializeApp(firebaseConfig);
-  import {getDatabase, ref, get, set, child, update, remove, add}
+  import {getDatabase, ref, get, set, child, update, remove}
     from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 
   const database = getDatabase();
@@ -165,22 +164,18 @@
 
   var SingUp = document.getElementById("SingUp");
 
-
-
-
   SingUp.addEventListener('click', (e)=>{
-
     var email_signup = document.getElementById('email_signup').value;
     var password_signup = document.getElementById('password_signup').value;
     var name = document.getElementById('name_signup').value;
     var phone = document.getElementById('number_signup').value;
 
-
+    console.log("Клик был")
     createUserWithEmailAndPassword(auth, email_signup, password_signup)
             .then((userCredential) =>{
               const user = userCredential.user;
 
-              add(ref(database, 'Пользователи/' + user.uid),{
+              set(ref(database, 'Пользователи/' + user.uid),{
                 email:email_signup,
                 pass:password_signup,
                 "level":"Начальный",
@@ -193,18 +188,15 @@
             .catch((error) =>{
               const errorCode = error.code;
               const errorMessage = error.message;
-
-              alert('errorMessage');
+              console.log("Событие не прошло")
+              alert(errorMessage, errorCode);
             });
 
     alert('Аккаунт успешно создан!');
     setTimeout(function(){
       window.location.href = 'authorization.html';
-    }, 2 * 1000);
+    }, 3 * 1000);
   });
-
-  // user.uid
-
 
 </script>
 </body>
