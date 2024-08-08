@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/48bJJCc/website-ecommerce-1.jpg" alt="Project logo" width="726">
+  <img src="https://i.ibb.co/QKk0gmV/Gadget-Hub.png" alt="Project logo" width="726">
 </p>
 
 # Онлайн магазин электроники
